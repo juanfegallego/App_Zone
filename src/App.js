@@ -1,5 +1,5 @@
 
-import './App.css';
+import './App.scss';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
 
       <BrowserRouter>
       <Switch>
+        <Route path="/" component={Home}/>
       </Switch>   
       </BrowserRouter>
     </div>
