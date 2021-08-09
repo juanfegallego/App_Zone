@@ -5,16 +5,16 @@ import { connect } from 'react-redux';
 
 
 
+
+
 const Home = () => {
 
 
     return (
 
-        <div className="vistaHome">
-            <div >
-                <h1>TESTING !</h1>
-            </div>
-        </div>
+        <div className="container"></div>
+
+
     )
 }
 
