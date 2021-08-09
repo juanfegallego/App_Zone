@@ -5,7 +5,6 @@ import axios from "axios"
 import { LOGIN } from "../../redux/types"
 
 
-
 const Login = (props) => {
   let history = useHistory();
   // Hooks
@@ -148,4 +147,5 @@ const Login = (props) => {
   )
 }
 
-export default connect()(Login);
+export default Login;
+// connect()(Login)

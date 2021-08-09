@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 
-
-
 const Register = () => {
   let history = useHistory();
 
@@ -227,15 +225,7 @@ const Register = () => {
           onBlur={() => checkError("password")}
         ></input>
         <div className="error">{errors.ePassword}</div>
-        <input
-          className="inputBase"
-          type="string"
-          name="birthday"
-          onChange={updateFormulario}
-          placeholder="YYYY/MM/DD"
-          onBlur={() => checkError("birthday")}
-        ></input>
-        <div className="error">{errors.eBirthday}</div>
+        
         <input
           className="inputBase"
           type="tel"
@@ -299,14 +289,12 @@ const Register = () => {
         </button>
         <div>{msgError}</div>
       </div>
-      <div className="textRight">
-        <p>Crea tu cuenta!</p>
-        {/* <img className="imageCena" src={cena} alt="cena" /> */}
-      </div>
+
     </div>
   );
 };
 
-export default connect((state) => ({
-  credential: state.credential,
-}))(Register);
+export default  Register;
+// connect((state) => ({
+//   credential: state.credential,
+// }))(Register);
