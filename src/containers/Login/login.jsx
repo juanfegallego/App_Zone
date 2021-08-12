@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import axios from "axios"
 import { LOGIN } from "../../redux/types"
+import Button from '../../components/Button/Button';
+import imageLogin from '../../components/img/login.jpg';
 
 
 const Login = (props) => {
@@ -16,6 +18,10 @@ const Login = (props) => {
     eEmail: "",
     ePassword: "",
   });
+
+  const takeMe = (were) => {
+    history.push(were);
+};
 
   //Handlers
   const updateCredentials = (e) => {
@@ -47,7 +53,7 @@ const Login = (props) => {
           setErrorLogin({
             ...errorLogin,
             ePassword:
-              "La contraseña debe contener como mínimo 8 caracteres, mayúsculas, minúsculas, un número",
+              "La contraseña debe contener como mínimo 8 caracteres, mayúsculas, minúsculas y un número",
           });
         } else {
           setErrorLogin({ ...errorLogin, ePassword: "" });
@@ -112,19 +118,18 @@ const Login = (props) => {
   };
 
   return (
-    <div>
       <div className="vistaLogin">
         <div className="loginCard">
           <input
             className="inputLogin"
             name="email"
             title="email"
-            placeholder="Email...example@example.com"
+            placeholder="Email"
             onChange={updateCredentials}
             onBlur={() => checkLogin("email")}
             lenght="30"
           />
-          <div>{errorLogin.eEmail}</div>
+          <div className="error">{errorLogin.eEmail}</div>
           <input
             className="inputLogin"
             type="password"
@@ -135,15 +140,16 @@ const Login = (props) => {
             onBlur={() => checkLogin("password")}
             lenght="30"
           />
-          <div>{errorLogin.ePassword}</div>
+          <div className="error">{errorLogin.ePassword}</div>
 
-          <div className="sendButton" type="submit" onClick={() => logeame()} >
-            Login
-          </div>
+          <div className="sendButton" type="submit" onClick={() => logeame()} >Acceder</div>
+          <div>¿Aún no tienes una cuenta?</div>
+          <div>Únete ahora</div>
+          <Button lugar="/register" destino="Registro" onClick={() => takeMe("/")}></Button>
           <div>{msgError}</div>
         </div>
+        <div className="loginRight"> <img className="imageLogin" src={imageLogin} alt="people" /></div>
       </div>
-    </div>
   )
 }
 
