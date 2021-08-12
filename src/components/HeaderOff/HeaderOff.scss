@@ -1,0 +1,15 @@
+.boton{
+    display: flex;
+}
+
+.offText{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    flex-grow: 0;
+}
+
+.navbar-light .navbar-toggler{
+    border-color: transparent;
+}
