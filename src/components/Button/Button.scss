@@ -4,13 +4,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: $text;
     transition: 0.2s;
     cursor: pointer;
 
 }
 
 .boton:hover{
-    background-color: red;
+    background-color: $white;
     transition: 0.2s;
 }
