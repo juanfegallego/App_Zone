@@ -4,10 +4,17 @@
 @import 'containers/Register/register.scss';
 @import 'components/Button/Button.scss';
 @import 'components/Header/Header.scss';
+@import 'components/HeaderOff/HeaderOff.scss';
 
+body{
+  margin: 0em;
+  padding: 0em;
+  color: $black;
 
+}
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
