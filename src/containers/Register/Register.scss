@@ -38,7 +38,7 @@
       width: 16em;
       border: 0;
       position: relative;
-      background-color: #101115;
+      background-color: $black;
       border-radius: 5px;
       height: 3em;
       color: rgb(255, 255, 255);
@@ -50,7 +50,7 @@
   
     [type=submit]:hover{
   
-      background-color: #101115;
+      background-color: $text;
       transition: 0.3s;
     }
   
@@ -58,9 +58,9 @@
     
     .inputBase:focus {
       outline: none;
-      border-color: #FFA700;
+      border-color: $text;
     }
-  
+    
     .textRight{
         display: flex;
         justify-content: center;
@@ -77,5 +77,5 @@
     }
   
   .error{
-    color: red;
+    color:$error;
   }
