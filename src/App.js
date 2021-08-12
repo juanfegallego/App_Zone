@@ -5,6 +5,7 @@ import Home from './containers/Home/Home';
 import Register from './containers/Register/Register';
 import Login from './containers/Login/Login';
 import Header from './components/Header/Header';
+import HeaderOff from './components/HeaderOff/HeaderOff';
 
 
 
@@ -14,7 +15,8 @@ function App() {
     <div className="App">
 
       <BrowserRouter>
-      <Header/>
+      {/* <Header/> */}
+      <HeaderOff/>
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/register" exact component={Register}/> 
