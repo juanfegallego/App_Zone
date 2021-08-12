@@ -163,14 +163,13 @@ const Register = () => {
       password: datosUser.password,
       telephone: datosUser.telephone,
       country: datosUser.country, 
-      // document.getElementById('opcionCountry')
       city: datosUser.city,
       birthday: datosUser.birthday,
     };
 
     console.log("soy ejecuta",user)
     axios
-      .post("https://back-rental-movies.herokuapp.com/users/", user)
+      .post("http://localhost:3005/user", user)
       .then((res) => {})
       .catch((error) => {
         console.log(error);
