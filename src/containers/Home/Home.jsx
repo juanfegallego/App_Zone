@@ -8,6 +8,7 @@ const Home = () => {
     return (
 
         <div className="vistaHome">
+            <div className="forma1"></div>
             <div className="text1">Control de aforo para todo tipo de espacios, locales y recintos</div>
         </div>
 
