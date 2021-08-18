@@ -86,12 +86,11 @@ const Login = (props) => {
 
     //Axios..envio
     try {
-      let res = await axios.post("https://back-rental-movies.herokuapp.com/login", body);
 
-      // setCredentials(res.data.results);
-      // localStorage.setItem("token", res.data.token);
-      // localStorage.setItem("user", JSON.stringify(res.data.user));
+      let res = await axios.post("http://localhost:3005/user/login", body);
+      
 
+    
       let data = {
         token: res.data.token,
         user: res.data.user,
@@ -101,15 +100,16 @@ const Login = (props) => {
 
       props.dispatch({ type: LOGIN, payload: data });
 
-      setTimeout(() => {
-        history.push("/profile");
-      }, 0);
 
-      // if (res.data.user.isAdmin === false) {
-      //   history.push('/profile')
-      // } else {
-      //   history.push('/profileAdmin')
-      // }
+      // setTimeout(() => {
+      //   history.push("/profile");
+      // }, 0);
+
+      if (res.data.user.role === "Customer") {
+        history.push('/profile')
+      } else {
+        history.push('/profileAdmin')
+      }
     } catch (err) {
       setMensajeError(err);
     }
@@ -119,6 +119,7 @@ const Login = (props) => {
 
   return (
       <div className="vistaLogin">
+        <pre>{JSON.stringify(credentials, null,2)}</pre>
         <div className="loginCard">
           <input
             className="inputLogin"
@@ -153,5 +154,4 @@ const Login = (props) => {
   )
 }
 
-export default Login;
-// connect()(Login)
+export default connect()(Login)
