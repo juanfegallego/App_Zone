@@ -5,6 +5,9 @@
 @import 'components/Button/Button.scss';
 @import 'components/Header/Header.scss';
 @import 'components/HeaderOff/HeaderOff.scss';
+@import 'antd/dist/antd.css';
+@import 'containers/Profile/Profile.scss';
+@import 'containers/ProfileAdmin/ProfileAdmin.scss';
 
 body{
   margin: 0em;
