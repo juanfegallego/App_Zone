@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
+import { notification } from "antd";
 
 const Register = () => {
   let history = useHistory();
@@ -19,7 +20,7 @@ const Register = () => {
     address: "",
     birthday: "",
   });
- 
+
 
 
 
@@ -35,15 +36,15 @@ const Register = () => {
     eTelephone: "",
     eBirthday: "",
     eCountry: "",
-    eCity:"",
+    eCity: "",
   });
 
-
+  const [, setNewMessage] = useState([]);
 
   //Handlers (manejadores)
-  
+
   const updateFormulario = (e) => {
-  
+
     setDatosUser({ ...datosUser, [e.target.name]: e.target.value });
   };
 
@@ -162,26 +163,41 @@ const Register = () => {
       email: datosUser.email,
       password: datosUser.password,
       telephone: datosUser.telephone,
-      country: datosUser.country, 
+      country: datosUser.country,
       city: datosUser.city,
       birthday: datosUser.birthday,
     };
 
-    console.log("soy ejecuta",user)
+    console.log("soy ejecuta", user)
     axios
       .post("http://localhost:3005/user", user)
-      .then((res) => {})
-      .catch((error) => {
-        console.log(error);
+      .then((res) => {
+        setDatosUser(res.data.results);
+        notification.success({ message: "Registered User.", style: { top: 76, }, description: "We have sent you an email to activate the account.", });
+        history.push("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+
+        var errorText = err.response.data.message;
+
+        if (errorText?.includes("email")) {
+          notification.warning({ message: "Attention.", style: { top: 76, }, description: JSON.stringify(err.response.data.message), });
+          setNewMessage(JSON.stringify("The email is already registered."));
+        } else {
+          notification.warning({ message: "Attention.", style: { top: 46, }, description: JSON.stringify(err.response.data.message), });
+          setNewMessage(JSON.stringify(err.response.data.message));
+        }
       });
 
-    if (datosUser.password !== "" && datosUser.email !== "") {
-      setTimeout(() => {
-        history.push("/login");
-      }, 750);
-    } else {
-      setMensajeError("los datos no estan completos");
-    }
+    // if (datosUser.password !== "" && datosUser.email !== "") {
+    //   setTimeout(() => {
+    //     history.push("/login");
+    //   }, 750);
+    // } else {
+    //   setMensajeError("los datos no estan completos");
+    // }
+
   };
 
   return (
@@ -224,7 +240,7 @@ const Register = () => {
           onBlur={() => checkError("password")}
         ></input>
         <div className="error">{errors.ePassword}</div>
-        
+
         <input
           className="inputBase"
           type="tel"
@@ -276,9 +292,9 @@ const Register = () => {
             <option disabled>City</option>
             <option value="valencia" >Valencia</option>
         </select> */}
-     
 
-        
+
+
         <button
           className="botonRegister"
           type="submit"
@@ -293,7 +309,7 @@ const Register = () => {
   );
 };
 
-export default  Register;
-// connect((state) => ({
-//   credential: state.credential,
-// }))(Register);
+export default connect((state) => ({
+  credential: state.credential,
+}))(Register);
+
