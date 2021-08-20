@@ -1,19 +1,37 @@
 .layoutAdmin{
   height: 100vh;
 }
-.menuLeft{
-  display: flex;
+
+.menuLeft .nav-left {
+    color: #EEEEEE;
+    display: flex;
+    margin: 4em;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
   .logout{
-    font-size: 2em;
+    font-size: 3em;
     color: $white;
   }
   .events{
-    font-size: 2em;
-    color: $white;}
-    pointer-events: all;
+    font-size: 3em;
+    color: $white;
+  }
+  .chart{
+    font-size: 3em;
+    color: $white;
+  }
+  .users{
+    font-size: 3em;
+    color: $white;
+  }
+  .ant-layout-sider-children {
+  height: 100%;
+  padding-left: 6em;
+  display: flex;
+  flex-direction: column;
+  }
 }
-
-
 
 .bodyProfileAdmin{
   height: 100vh;
@@ -37,7 +55,7 @@
     align-items: center;
     flex-direction: column;
   }
-  .allRents{
+  .vistaEvents{
       display: flex;
       flex-direction: row;
   }

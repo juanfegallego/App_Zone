@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
-import {LogoutOutlined, CalendarOutlined} from '@ant-design/icons';
+import {LogoutOutlined, CalendarOutlined, LineChartOutlined, TeamOutlined } from '@ant-design/icons';
 import { LOGOUT } from "../../redux/types";
+import AllUsers from '../AllUsers/AllUsers';
 
 
 function ProfileAdmin(props) {
@@ -15,20 +16,28 @@ function ProfileAdmin(props) {
     };
     const logOut = () => {
         props.dispatch({ type: LOGOUT })
+        history.push('/login');
     };
+
+
 
     if (props.credentials?.user.token !== '') {
         return (
             
             <Layout className="layoutAdmin" break >
                     <Sider className="menuLeft" >
-                    <li className="nav-item">
-                    <CalendarOutlined className="events" />
-                    </li>
-                    <li className="nav-item "  onClick={() => logOut("/login")}>
-                    <LogoutOutlined className="logout" lugar="/login" destino="LogOut" />
-                    </li>
-                    
+                    <div className="nav-left">
+                    <CalendarOutlined className="events" onClick={() => takeMe("/events")}  /> EVENTOS
+                    </div>
+                    <div className="nav-left">
+                    <LineChartOutlined className="chart" onClick={() => takeMe("/")}/> GRAFICOS
+                    </div>
+                    <div className="nav-left">
+                    <TeamOutlined className="users" onClick={() => takeMe("/allUsers")}/> USUARIOS
+                    </div>
+                    <div className="nav-left"  >
+                    <LogoutOutlined className="logout" lugar="/" destino="LogOut" onClick={() => logOut} /> LOGOUT
+                    </div>
                     </Sider>
                     <Layout>
                         <Content>
@@ -44,8 +53,8 @@ function ProfileAdmin(props) {
 
                     </div>
                 </div>
-                <div className="allRents">
-
+                <div className="vistaEvents">
+                <AllUsers/>
 
                 </div>
             </div>
