@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import { useHistory } from 'react-router-dom';
 import { LOGOUT } from "../../redux/types";
 import { connect } from "react-redux";
+import {LogoutOutlined} from '@ant-design/icons';
 
 const HeaderOff = (props) => {
     let history = useHistory();
@@ -11,6 +12,7 @@ const HeaderOff = (props) => {
     };
     const logOut = () => {
         props.dispatch({ type: LOGOUT })
+        history.push('/login');
     };
     if (props.credentials?.token !== "") {
       return (
@@ -31,10 +33,16 @@ const HeaderOff = (props) => {
                     <Button className="nav-link" lugar="/" destino="Inicio" onClick={() => takeMe("/")} />
                 </li>
                 <li class="nav-item">
-                <Button lugar="/login" destino="Eventos" onClick={() => takeMe("/login")}/>
+                <Button lugar="/events" destino="Eventos" onClick={() => takeMe("/events")}/>
+                </li>
+                <li class="nav-item">
+                <Button lugar="/profile" destino="Perfil" onClick={() => takeMe("/profile")}/>
                 </li>
                 <li class="nav-item" onClick={() => logOut("/login")}>
                 </li>
+                <li className="nav-item "  >
+                    <LogoutOutlined className="logout" lugar="/" destino="home" onClick={() => logOut("/")} />
+                    </li>
               </ul>
             </div>
           </div>
