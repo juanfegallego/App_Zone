@@ -119,7 +119,6 @@ const Login = (props) => {
 
   return (
       <div className="vistaLogin">
-        <pre>{JSON.stringify(credentials, null,2)}</pre>
         <div className="loginCard">
           <input
             className="inputLogin"
