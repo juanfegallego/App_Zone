@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import credentials from './credential-reducers';
+import events from  './event-reducers';
 
 
 
@@ -7,6 +8,8 @@ import credentials from './credential-reducers';
 
 const rootReducer = combineReducers({
     credentials,
+    events,
+
 
     
 
