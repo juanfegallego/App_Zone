@@ -1,0 +1,45 @@
+.vistaUser{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    .bodyUser{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .cardUser{
+            display: flex;
+            width: 49em;
+            border: 0.2em solid white;
+            border-radius: 1em;
+            background-color: #f0f0f0;
+            flex-direction: row;
+            padding: 1em;
+            margin-top: 0.3em;
+            align-items: center;
+            .buttonDelete{
+                background: red;
+                border-radius: 1em;
+                width: 9em;
+                height: 2em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+              }
+            .textUser{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 1em;
+                align-items: flex-start;
+            }
+            .imgUser{
+                height: 15em;
+                width: 20em;
+                border-radius: 0.5em;
+                margin: 1em;
+            }
+        }
+    }
+}
