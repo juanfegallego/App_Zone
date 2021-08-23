@@ -3,7 +3,7 @@ import { EVENT } from "../../redux/types";
 import axios from "axios";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
-import { Statistic } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 
 
@@ -39,6 +39,7 @@ const Events = (props) => {
       //GUARDANDO EN REDUX
       // props.dispatch({ type: REST, payload: res.data });
       setEvents(res.data)
+      console.log(res.data)
     } catch (error) {
       console.log(error);
     }
@@ -60,6 +61,23 @@ const Events = (props) => {
 
 }
 
+const accessEvent = async (eventId) => {
+
+  let token = props.credentials.token;
+  let idUser = props.credentials.idUser;
+
+
+  let body = {
+    id : eventId,
+    attendee : idUser,
+    email : props.credentials.email,
+    name : props.credentials.name
+  }
+  
+  let res = await axios.put('http://localhost:3005/event/join',body,{headers:{'authorization':'Bearer ' + token}});
+
+}
+
 
 
   if (events === undefined) {
@@ -77,12 +95,13 @@ const Events = (props) => {
               <div className="cardEvent">
                 <img className="imgEvent" src={event.imgEvent} alt="imgEvent" />
                 <div className="textEvent">
-                <div className="buttonDelete" onClick={() => deleteEvent(event)}>DELETE</div>
-                  <h1>{event.name}</h1>
-                  <p> Tipo de evento: {event.typeEvent}</p>
-                  <p> Direccion: {event.addres}</p>
-                  <p>Aforo: {event.capacity}</p>
-                  <p> <Statistic title="Aforo2" value={33} suffix={event.capacity} /></p>
+                <CloseOutlined className="buttonDelete" onClick={() => deleteEvent(event)}/>
+                  <h1 className="nameEvent">{event.name}</h1>
+                  <p>{event.typeEvent}</p>
+                  <p>{event.addres}</p>
+                  <h2 className="nameEvent">{event.capacity}</h2>
+                  {/* <p>gente: {event.attendance[{}]}</p> */}
+                  {/* <p><Statistic  className="capacity" title="Aforo" value={33}  suffix={event.capacity} /></p> */}
                 </div>
               </div>
             </div> 
