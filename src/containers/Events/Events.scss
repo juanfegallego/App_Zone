@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100vw;
     .bodyEvent{
         display: flex;
         flex-direction: column;
@@ -12,21 +13,24 @@
             width: 49em;
             border: 0.2em solid white;
             border-radius: 1em;
-            background-color: #f0f0f0;
-            flex-direction: row;
+            background: $azul;
             padding: 1em;
             margin-top: 0.3em;
             align-items: center;
+            color: white;
+            .nameEvent{
+                color: white !important;
+            }
             .buttonDelete{
-                background: red;
-                border-radius: 1em;
-                width: 9em;
-                height: 2em;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: row;
-              }
+                width: 14em;
+                height: 1em;
+                font-size: 3em;
+                color: red;
+                .buttonDelete:hover{
+                    color: white;
+                    background-color: yellow;
+                }
+            }
             .textEvent{
                 display: flex;
                 flex-direction: column;
@@ -39,6 +43,9 @@
                 width: 20em;
                 border-radius: 0.5em;
                 margin: 1em;
+            }
+            .capacity{
+                color: white;
             }
         }
     }
