@@ -45,40 +45,45 @@ const Users = (props) => {
         )
     } else {
         return (
-            <div className="vistaUser">
-                {users?.map((user) => {
-                    return (
-                        //   <div className="bodyUser" key={user._id}>
-                        //   <div className="cardUser">
-                        //     <div className="textUser">
-                        //       <h1>{user.name}</h1>
-                        //       <p> {user.surname}</p>
-                        //     </div>
-                        //   </div>
-                        // </div> 
-                        <table class="table table-hover align-middle" key={user._id}>
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">Nº</th>
-                                    <th scope="col">name</th>
-                                    <th scope="col">Surname</th>
-                                    <th scope="col">Role</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                  <th scope="row"><td>{user._id}</td></th>
-                                  <td>{user.name}</td>
-                                  <td>{user.surname}</td>
-                                  <td>{user.role}</td>
-                                </tr>
+            <div>
+                <div>
+                    <table class="table table-dark container-fluid">
+                        <thead>
+                            <tr>
+                                <th scope="col-3">Name</th>
+                                <th scope="col-3">Surname</th>
+                                <th scope="col-3">Rol</th>
+                                <th scope="col-3">email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div className="vistaUser">
+                        {users?.map((user) => {
+                            return (
+                                // <div className="bodyUser" key={user._id}>
+                                //     <div className="cardUser">
+                                //         <div className="textUser">
+                                //             <h1>{user.name}</h1>
+                                //             <p> {user.surname}</p>
+                                //         </div>
+                                //     </div>
+                                // </div>
+                                    <table class=" table table-hover " key={user._id}>
+                                            <tbody >
+                                                <tr class="align-middle">
+                                                    <td class="col-3">{user.name}</td>
+                                                    <td class="col-4">{user.surname}</td>
+                                                    <td class="col-2">{user.role}</td>
+                                                    <td class="col-6">{user.email}</td>
+                                                </tr>
+                                            </tbody>
+                                    </table>
 
-                                </tbody>
-                        </table>
-                    )
-                })}
+                            )
+                        })}
 
+                    </div>
+                </div>
             </div>
 
         )
